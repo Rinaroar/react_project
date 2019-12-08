@@ -34,7 +34,7 @@ import React, {Component} from 'react';
 export default Table */
 
 
-// simple component (whici is a function)
+// simple component (which is a function)
 
 const TableHeader = () => {
   return (
