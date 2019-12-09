@@ -69,20 +69,34 @@ const TableHeader = () => {
 } */
 
 // Using props removing data
-const TableBody = () => {
-  return <tbody />
+const TableBody = props => {
+  const rows = props.characterData.map((row, index) => {
+    return (
+      <tr key={index}>
+        <td>{row.name}</td>
+        <td>{row.job}</td>
+        <td>
+          <button onClick={() =>
+          props.removeCharacter(index)}> Delete </button>
+        </td>
+      </tr>
+    )
+  })
+
+  return <tbody>{rows}</tbody>
 }
+
 // data will be moved to an array of objects (as if we were bringing in a JSON-based API)
 // In App.js
 
 class Table extends Component {
   render(){
-    const {peopleData} = this.props
+    const { characterData, removeCharacter } = this.props
 
     return (
       <table>
         <TableHeader />
-        <TableBody peopleData={peopleData} />
+        <TableBody characterData={characterData} removeCharacter={removeCharacter} />
       </table>
     )
   }
